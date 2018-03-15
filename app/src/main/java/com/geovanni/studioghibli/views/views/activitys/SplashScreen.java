@@ -21,9 +21,6 @@ public class SplashScreen extends BaseActivity {
 
     private static int SPLASH_TIME_OUT = 4000;
 
-    @BindView(R.id.lavsome)
-    LottieAnimationView lottieAnimationView;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,11 +34,6 @@ public class SplashScreen extends BaseActivity {
     }
 
     public void initApp() {
-
-        lottieAnimationView.setAnimation("jump_loader.json");
-        lottieAnimationView.setRepeatCount(LottieDrawable.INFINITE);
-        lottieAnimationView.setRepeatMode(LottieDrawable.INFINITE);
-        lottieAnimationView.playAnimation();
 
         new Handler().postDelayed(new Runnable() {
             @Override

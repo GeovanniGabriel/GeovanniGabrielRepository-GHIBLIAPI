@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">StudioGhibli</string>
+
+    //MenuItems
+    <string name="films">Films</string>
+    <string name="people">People</string>
+    <string name="locations">Planets</string>
+    <string name="species">Species</string>
+    <string name="vehicles">vehicles</string>
+
+    <string name="sub_films">Infomation about all of the Studio Ghibli films.</string>
+    <string name="sub_people">Information about all of the Studio Ghibli people. This broadly includes all Ghibli characters, human and non-.</string>
+    <string name="sub_locations">Information about all of the Studio Ghibli locations. Includes lands, countries, and places.</string>
+    <string name="sub_species">Information about all of the Studio Ghibli species. This includes humans, animals, and spirits et al.</string>
+    <string name="sub_vehicles">Information about all of the Studio Ghibli vechiles. This includes cars, ships, and planes..</string>
 </resources>
