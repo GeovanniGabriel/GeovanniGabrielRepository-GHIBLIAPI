@@ -41,6 +41,6 @@
         app:layout_constraintEnd_toEndOf="@id/guideline4"
         app:layout_constraintStart_toStartOf="@id/guideline3"
         app:layout_constraintTop_toTopOf="@id/guideline1"
-        app:srcCompat="@drawable/ic_studio_ghibli" />
+        app:srcCompat="@drawable/ic_logo_gold" />
 
 </android.support.constraint.ConstraintLayout>

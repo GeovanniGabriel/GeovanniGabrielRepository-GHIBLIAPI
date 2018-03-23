@@ -4,9 +4,9 @@
     //MenuItems
     <string name="films">Films</string>
     <string name="people">People</string>
-    <string name="locations">Planets</string>
+    <string name="locations">Locations</string>
     <string name="species">Species</string>
-    <string name="vehicles">vehicles</string>
+    <string name="vehicles">Vehicles</string>
 
     <string name="sub_films">Infomation about all of the Studio Ghibli films.</string>
     <string name="sub_people">Information about all of the Studio Ghibli people. This broadly includes all Ghibli characters, human and non-.</string>

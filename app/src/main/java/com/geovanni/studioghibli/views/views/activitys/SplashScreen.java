@@ -5,17 +5,9 @@ import android.os.Handler;
 import android.view.Window;
 import android.view.WindowManager;
 
-import com.airbnb.lottie.LottieAnimationView;
-import com.airbnb.lottie.LottieDrawable;
 import com.geovanni.studioghibli.R;
 import com.geovanni.studioghibli.views.bussiness.utils.NavigationUtil;
 import com.geovanni.studioghibli.views.views.base.BaseActivity;
-
-import butterknife.BindView;
-
-/**
- * Created by gabri
- */
 
 public class SplashScreen extends BaseActivity {
 

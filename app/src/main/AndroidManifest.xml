@@ -30,6 +30,10 @@
             android:name=".views.views.activitys.MainActivity"
             android:screenOrientation="portrait" />
 
+        <activity
+            android:name=".views.views.activitys.SectionActivity"
+            android:screenOrientation="portrait" />
+
     </application>
 
 </manifest>
