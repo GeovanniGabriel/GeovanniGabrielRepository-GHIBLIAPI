@@ -31,6 +31,11 @@ public class SectionActivity extends BaseActivity {
         ReplaceMainFragment();
     }
 
+    @Override
+    protected void initViews() {
+        super.initViews();
+    }
+
     private void ReplaceMainFragment() {
 
         Fragment fragment = new Fragment();

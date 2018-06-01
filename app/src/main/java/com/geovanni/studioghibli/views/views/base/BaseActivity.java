@@ -17,4 +17,17 @@ public class BaseActivity extends AppCompatActivity {
     protected void initViews() {
         ButterKnife.bind(this);
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
+        int count = getSupportFragmentManager().getBackStackEntryCount();
+
+        if (count == 1) {
+            finish();
+        } else {
+            super.onBackPressed();
+        }
+    }
 }

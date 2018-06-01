@@ -1,5 +1,6 @@
 package com.geovanni.studioghibli.views.views.base;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -12,6 +13,17 @@ import butterknife.ButterKnife;
 public abstract class BaseFragment extends Fragment {
 
     private View rootView;
+    private Context context;
+
+    protected abstract int getLayoutResourceId();
+
+    protected abstract String getCustomTag();
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        this.context = context;
+    }
 
     @Nullable
     @Override
@@ -21,5 +33,7 @@ public abstract class BaseFragment extends Fragment {
         return rootView;
     }
 
-    protected abstract int getLayoutResourceId();
+    public Context getCurrentContext() {
+        return this.context;
+    }
 }
