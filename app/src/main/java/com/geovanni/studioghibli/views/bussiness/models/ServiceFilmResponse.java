@@ -1,20 +1,39 @@
 package com.geovanni.studioghibli.views.bussiness.models;
 
-import java.util.List;
+import android.arch.persistence.room.ColumnInfo;
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.PrimaryKey;
+import android.support.annotation.NonNull;
 
+@Entity
 public class ServiceFilmResponse {
 
+
+
+    @PrimaryKey
+    @NonNull
     private String id;
+    @ColumnInfo(name = "title")
     private String title;
+    @ColumnInfo(name = "description")
     private String description;
+    @ColumnInfo(name = "director")
     private String director;
+    @ColumnInfo(name = "producer")
     private String producer;
+    @ColumnInfo(name = "releaseDate")
     private String releaseDate;
+    @ColumnInfo(name = "rtScore")
     private String rtScore;
-    private List<String> people = null;
-    private List<String> species = null;
-    private List<String> locations = null;
-    private List<String> vehicles = null;
+//    @TypeConverter(Converters.class)
+//    private List<String> people = null;
+//    @TypeConverter(Converters.class)
+//    private List<String> species = null;
+//    @TypeConverter(Converters.class)
+//    private List<String> locations = null;
+//    @TypeConverter(Converters.class)
+//    private List<String> vehicles = null;
+    @ColumnInfo(name = "url")
     private String url;
 
     public String getId() {
@@ -73,37 +92,37 @@ public class ServiceFilmResponse {
         this.rtScore = rtScore;
     }
 
-    public List<String> getPeople() {
-        return people;
-    }
-
-    public void setPeople(List<String> people) {
-        this.people = people;
-    }
-
-    public List<String> getSpecies() {
-        return species;
-    }
-
-    public void setSpecies(List<String> species) {
-        this.species = species;
-    }
-
-    public List<String> getLocations() {
-        return locations;
-    }
-
-    public void setLocations(List<String> locations) {
-        this.locations = locations;
-    }
-
-    public List<String> getVehicles() {
-        return vehicles;
-    }
-
-    public void setVehicles(List<String> vehicles) {
-        this.vehicles = vehicles;
-    }
+//    public List<String> getPeople() {
+//        return people;
+//    }
+//
+//    public void setPeople(List<String> people) {
+//        this.people = people;
+//    }
+//
+//    public List<String> getSpecies() {
+//        return species;
+//    }
+//
+//    public void setSpecies(List<String> species) {
+//        this.species = species;
+//    }
+//
+//    public List<String> getLocations() {
+//        return locations;
+//    }
+//
+//    public void setLocations(List<String> locations) {
+//        this.locations = locations;
+//    }
+//
+//    public List<String> getVehicles() {
+//        return vehicles;
+//    }
+//
+//    public void setVehicles(List<String> vehicles) {
+//        this.vehicles = vehicles;
+//    }
 
     public String getUrl() {
         return url;

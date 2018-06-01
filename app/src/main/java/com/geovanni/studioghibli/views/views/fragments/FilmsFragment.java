@@ -13,11 +13,14 @@ import com.geovanni.studioghibli.views.bussiness.models.ServiceFilmResponse;
 import com.geovanni.studioghibli.views.bussiness.presenters.RootPresenter;
 import com.geovanni.studioghibli.views.bussiness.utils.ServicesError;
 import com.geovanni.studioghibli.views.bussiness.utils.ServicesResponse;
+import com.geovanni.studioghibli.views.entityDao.roomDataBase.FilmsRoomDatabase;
+import com.geovanni.studioghibli.views.entityDao.roomDataBase.ManagerDbAsync;
 import com.geovanni.studioghibli.views.views.adapters.FilmsAdapter;
 import com.geovanni.studioghibli.views.views.base.BaseFragment;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 import butterknife.BindView;
 
@@ -49,7 +52,22 @@ public class FilmsFragment extends BaseFragment implements IServicesContract.Vie
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         setupRecyclerView();
-        rootPresenter.requestFilms();
+
+        List<ServiceFilmResponse> films = null;
+        try {
+            films = new ManagerDbAsync.GetAllDataFromDbAsync(FilmsRoomDatabase.getDatabase(getContext())).execute().get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+
+        if (films != null && films.size() == 0) {
+            rootPresenter.requestFilms();
+        } else {
+            filmsAdapter.replaceData(films);
+        }
+
     }
 
     @Override
@@ -69,8 +87,14 @@ public class FilmsFragment extends BaseFragment implements IServicesContract.Vie
 
     @Override
     public void showResponse(ServicesResponse response) {
-        List<ServiceFilmResponse> listResponse = (List<ServiceFilmResponse>) response.getResponse();
-        filmsAdapter.replaceData(listResponse);
+
+        try {
+            List<ServiceFilmResponse> listResponse = (List<ServiceFilmResponse>) response.getResponse();
+            filmsAdapter.replaceData(listResponse);
+            new ManagerDbAsync.InsertDataToDbAsync(FilmsRoomDatabase.getDatabase(getContext()), listResponse).execute();
+        } catch (Exception e) {
+        }
+
     }
 
     @Override
