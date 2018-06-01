@@ -15,8 +15,7 @@ public class ServicesGhibliApi implements IServicesContract.View {
     private RootPresenter rootPresenter;
 
     public ServicesGhibliApi(Context context) {
-        rootPresenter = new RootPresenter(context);
-        rootPresenter.setView(this);
+        rootPresenter = new RootPresenter(context, this);
     }
 
     public void getFilms(IServiceListener iServiceListener) {

@@ -13,17 +13,14 @@ public class RootPresenter implements IServiceListener {
     private ServicesImpl servicesImpl;
     private IServicesContract.View view;
 
-    public RootPresenter(Context context) {
+    public RootPresenter(Context context, IServicesContract.View view) {
         this.servicesImpl = new ServicesImpl(context);
         this.servicesImpl.setOnServicesListener(this);
+        this.view = view;
     }
 
     public void requestFilms() {
         servicesImpl.getFilms();
-    }
-
-    public void setView(IServicesContract.View view) {
-        this.view = view;
     }
 
     @Override
