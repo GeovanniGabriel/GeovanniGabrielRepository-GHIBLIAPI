@@ -3,10 +3,6 @@ package com.geovanni.studioghibli.views;
 import android.app.Application;
 import android.content.Context;
 
-/**
- * @author Broxel Labs.
- */
-
 public class StudioGhibliApp extends Application {
 
     private static Context contextApp;

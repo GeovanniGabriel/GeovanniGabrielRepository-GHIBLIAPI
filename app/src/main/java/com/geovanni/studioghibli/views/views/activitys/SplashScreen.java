@@ -1,5 +1,6 @@
 package com.geovanni.studioghibli.views.views.activitys;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.Window;
@@ -9,7 +10,7 @@ import com.geovanni.studioghibli.R;
 import com.geovanni.studioghibli.views.bussiness.utils.NavigationUtil;
 import com.geovanni.studioghibli.views.views.base.BaseActivity;
 
-public class SplashScreen extends BaseActivity {
+public class SplashScreen extends Activity {
 
     private static int SPLASH_TIME_OUT = 4000;
 
@@ -21,7 +22,6 @@ public class SplashScreen extends BaseActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         setContentView(R.layout.activity_splash_screen);
-        initViews();
         initApp();
     }
 

@@ -27,11 +27,22 @@ public class ServicesGhibliApi implements IServicesContract.View {
         this.iServiceListener = iServiceListener;
     }
 
+
     @Override
     public void showResponse(ServicesResponse response) {
     }
 
     @Override
     public void showError(ServicesError broxelServicesError) {
+    }
+
+    @Override
+    public void showProgress() {
+
+    }
+
+    @Override
+    public void hideProgress() {
+
     }
 }

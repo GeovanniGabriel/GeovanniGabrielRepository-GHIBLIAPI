@@ -6,10 +6,6 @@ import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-/**
- * @author Broxel Labs.
- */
-
 public class ServicesRetrofitManager {
 
     private final OkHttpClient okHttpClient = new OkHttpClient.Builder()

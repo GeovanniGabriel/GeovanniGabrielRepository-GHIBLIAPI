@@ -3,10 +3,6 @@ package com.geovanni.studioghibli.views.bussiness.utils;
 import com.google.gson.Gson;
 import com.google.gson.JsonParseException;
 
-/**
- * @author Broxel Labs.
- */
-
 public class ServicesUtilities {
 
     /**

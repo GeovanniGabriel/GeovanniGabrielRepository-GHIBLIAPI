@@ -8,4 +8,7 @@
 
     <color name="white">#ffffff</color>
     <color name="colorBackgroundFilms">#b3e5fc</color>
+
+    <color name="transparent51">#51FFFFFF</color>
+    <color name="slateGreyTwo">#514e62</color>
 </resources>

@@ -72,4 +72,10 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
+    <com.geovanni.studioghibli.views.customViews.ProgressLayout
+        android:id="@+id/plLoading"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
+
 </android.support.constraint.ConstraintLayout>

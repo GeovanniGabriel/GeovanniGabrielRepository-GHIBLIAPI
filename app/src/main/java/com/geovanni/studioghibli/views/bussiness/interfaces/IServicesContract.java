@@ -8,5 +8,9 @@ public interface IServicesContract {
         void showResponse(ServicesResponse<T> response);
 
         void showError(ServicesError broxelServicesError);
+
+        void showProgress();
+
+        void hideProgress();
     }
 }

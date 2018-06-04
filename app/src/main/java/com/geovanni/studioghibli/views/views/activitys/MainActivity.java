@@ -4,7 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.geovanni.studioghibli.R;
+import com.geovanni.studioghibli.views.bussiness.interfaces.IProgressLayout;
 import com.geovanni.studioghibli.views.bussiness.models.MenuItem;
+import com.geovanni.studioghibli.views.customViews.ProgressLayout;
 import com.geovanni.studioghibli.views.views.base.BaseActivity;
 import com.nightonke.boommenu.BoomButtons.HamButton;
 import com.nightonke.boommenu.BoomButtons.OnBMClickListener;
@@ -15,7 +17,7 @@ import java.util.List;
 
 import butterknife.BindView;
 
-public class MainActivity extends BaseActivity implements OnBMClickListener {
+public class MainActivity extends BaseActivity implements OnBMClickListener, IProgressLayout {
 
     @BindView(R.id.bmb)
     BoomMenuButton bmb;
@@ -75,6 +77,8 @@ public class MainActivity extends BaseActivity implements OnBMClickListener {
         startActivity(intent);
     }
 
-
-
+    @Override
+    public ProgressLayout getProgress() {
+        return getProgressLayout();
+    }
 }

@@ -1,5 +1,7 @@
 package com.geovanni.studioghibli.views.views.fragments;
 
+import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -8,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.geovanni.studioghibli.R;
+import com.geovanni.studioghibli.views.bussiness.interfaces.IProgressLayout;
 import com.geovanni.studioghibli.views.bussiness.interfaces.IServicesContract;
 import com.geovanni.studioghibli.views.bussiness.models.ServiceFilmResponse;
 import com.geovanni.studioghibli.views.bussiness.presenters.RootPresenter;
@@ -30,6 +33,7 @@ public class FilmsFragment extends BaseFragment implements IServicesContract.Vie
     private RootPresenter rootPresenter;
     private FilmsAdapter filmsAdapter;
     private List<ServiceFilmResponse> films;
+    private IProgressLayout iProgressLayout;
 
     @BindView(R.id.rvFilms)
     RecyclerView rvFilms;
@@ -37,6 +41,16 @@ public class FilmsFragment extends BaseFragment implements IServicesContract.Vie
     public static FilmsFragment newInstance() {
         FilmsFragment fragment = new FilmsFragment();
         return fragment;
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        Activity activity = null;
+        if (context instanceof Activity) {
+            activity = (Activity) context;
+        }
+        iProgressLayout = (IProgressLayout) activity;
     }
 
     @Override
@@ -51,6 +65,8 @@ public class FilmsFragment extends BaseFragment implements IServicesContract.Vie
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        showProgress();
         setupRecyclerView();
 
         List<ServiceFilmResponse> films = null;
@@ -66,6 +82,7 @@ public class FilmsFragment extends BaseFragment implements IServicesContract.Vie
             rootPresenter.requestFilms();
         } else {
             filmsAdapter.replaceData(films);
+            hideProgress();
         }
 
     }
@@ -101,4 +118,15 @@ public class FilmsFragment extends BaseFragment implements IServicesContract.Vie
     public void showError(ServicesError broxelServicesError) {
         getActivity().onBackPressed();
     }
+
+    @Override
+    public void showProgress() {
+        iProgressLayout.getProgress().setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void hideProgress() {
+        iProgressLayout.getProgress().setVisibility(View.GONE);
+    }
+
 }

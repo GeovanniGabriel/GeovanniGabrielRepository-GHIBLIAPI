@@ -6,12 +6,14 @@ import android.support.v4.app.FragmentTransaction;
 import android.widget.RelativeLayout;
 
 import com.geovanni.studioghibli.R;
+import com.geovanni.studioghibli.views.bussiness.interfaces.IProgressLayout;
+import com.geovanni.studioghibli.views.customViews.ProgressLayout;
 import com.geovanni.studioghibli.views.views.base.BaseActivity;
 import com.geovanni.studioghibli.views.views.fragments.FilmsFragment;
 
 import butterknife.BindView;
 
-public class SectionActivity extends BaseActivity {
+public class SectionActivity extends BaseActivity implements IProgressLayout {
 
     private int section;
 
@@ -78,4 +80,8 @@ public class SectionActivity extends BaseActivity {
         fragmentTransaction.commit();
     }
 
+    @Override
+    public ProgressLayout getProgress() {
+        return getProgressLayout();
+    }
 }

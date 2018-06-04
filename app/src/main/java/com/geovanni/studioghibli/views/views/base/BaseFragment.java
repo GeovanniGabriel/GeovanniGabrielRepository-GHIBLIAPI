@@ -8,6 +8,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.geovanni.studioghibli.R;
+import com.geovanni.studioghibli.views.customViews.ProgressLayout;
+
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public abstract class BaseFragment extends Fragment {
@@ -31,9 +35,5 @@ public abstract class BaseFragment extends Fragment {
         rootView = inflater.inflate(getLayoutResourceId(), container, false);
         ButterKnife.bind(this, rootView);
         return rootView;
-    }
-
-    public Context getCurrentContext() {
-        return this.context;
     }
 }

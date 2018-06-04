@@ -20,16 +20,19 @@ public class RootPresenter implements IServiceListener {
     }
 
     public void requestFilms() {
+        view.showProgress();
         servicesImpl.getFilms();
     }
 
     @Override
     public void onResponse(ServicesResponse response) {
+        view.hideProgress();
         view.showResponse(response);
     }
 
     @Override
     public void onError(ServicesError broxelServicesError) {
+        view.hideProgress();
         view.showError(broxelServicesError);
     }
 }
