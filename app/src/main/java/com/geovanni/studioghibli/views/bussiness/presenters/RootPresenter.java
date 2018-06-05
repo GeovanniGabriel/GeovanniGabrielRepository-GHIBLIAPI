@@ -24,6 +24,11 @@ public class RootPresenter implements IServiceListener {
         servicesImpl.getFilms();
     }
 
+    public void requestPeople() {
+        view.showProgress();
+        servicesImpl.getPeople();
+    }
+
     @Override
     public void onResponse(ServicesResponse response) {
         view.hideProgress();

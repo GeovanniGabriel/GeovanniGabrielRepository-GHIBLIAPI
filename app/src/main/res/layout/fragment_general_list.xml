@@ -47,19 +47,19 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
+        android:id="@+id/imvTitle"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginBottom="5dp"
         android:layout_marginTop="5dp"
         android:scaleType="fitCenter"
-        android:src="@drawable/ic_films_2"
         app:layout_constraintBottom_toBottomOf="@id/guideline"
         app:layout_constraintEnd_toEndOf="@id/guideline1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/rvFilms"
+        android:id="@+id/rvGeneralData"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:scrollbars="vertical"

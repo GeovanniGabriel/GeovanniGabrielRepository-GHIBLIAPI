@@ -10,6 +10,7 @@ import com.geovanni.studioghibli.views.bussiness.interfaces.IProgressLayout;
 import com.geovanni.studioghibli.views.customViews.ProgressLayout;
 import com.geovanni.studioghibli.views.views.base.BaseActivity;
 import com.geovanni.studioghibli.views.views.fragments.FilmsFragment;
+import com.geovanni.studioghibli.views.views.fragments.PeopleFragment;
 
 import butterknife.BindView;
 
@@ -51,7 +52,7 @@ public class SectionActivity extends BaseActivity implements IProgressLayout {
                 tagFragment = FilmsFragment.TAG;
                 break;
             case 1:
-                fragment = FilmsFragment.newInstance();
+                fragment = PeopleFragment.newInstance();
                 titleFragment = getString(R.string.people);
                 tagFragment = FilmsFragment.TAG;
                 break;

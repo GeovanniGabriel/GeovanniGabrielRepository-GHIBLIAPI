@@ -14,31 +14,28 @@ import android.widget.TextView;
 import com.geovanni.studioghibli.R;
 import com.geovanni.studioghibli.views.bussiness.interfaces.IProgressLayout;
 import com.geovanni.studioghibli.views.bussiness.interfaces.IServicesContract;
-import com.geovanni.studioghibli.views.bussiness.models.ServiceFilmResponse;
+import com.geovanni.studioghibli.views.bussiness.models.ServicePeopleResponse;
 import com.geovanni.studioghibli.views.bussiness.presenters.RootPresenter;
 import com.geovanni.studioghibli.views.bussiness.utils.ServicesError;
 import com.geovanni.studioghibli.views.bussiness.utils.ServicesResponse;
-import com.geovanni.studioghibli.views.entityDao.roomDataBase.FilmsRoomDatabase;
-import com.geovanni.studioghibli.views.entityDao.roomDataBase.ManagerDbAsync;
-import com.geovanni.studioghibli.views.views.adapters.FilmsAdapter;
+import com.geovanni.studioghibli.views.views.adapters.PeopleAdapter;
 import com.geovanni.studioghibli.views.views.base.BaseFragment;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.ExecutionException;
 
 import butterknife.BindView;
 
-public class FilmsFragment extends BaseFragment implements IServicesContract.View {
+public class PeopleFragment extends BaseFragment implements IServicesContract.View {
 
-    public static final String TAG = FilmsFragment.class.getSimpleName();
+    public static final String TAG = PeopleFragment.class.getSimpleName();
     private RootPresenter rootPresenter;
-    private FilmsAdapter filmsAdapter;
-    private List<ServiceFilmResponse> films;
+    private List<ServicePeopleResponse> people;
     private IProgressLayout iProgressLayout;
+    private PeopleAdapter peopleAdapter;
 
     @BindView(R.id.rvGeneralData)
-    RecyclerView rvFilms;
+    RecyclerView rvPeople;
 
     @BindView(R.id.txvTitle)
     TextView txvTitle;
@@ -46,8 +43,8 @@ public class FilmsFragment extends BaseFragment implements IServicesContract.Vie
     @BindView(R.id.imvTitle)
     ImageView imvTitle;
 
-    public static FilmsFragment newInstance() {
-        FilmsFragment fragment = new FilmsFragment();
+    public static PeopleFragment newInstance() {
+        PeopleFragment fragment = new PeopleFragment();
         return fragment;
     }
 
@@ -66,8 +63,8 @@ public class FilmsFragment extends BaseFragment implements IServicesContract.Vie
         super.onCreate(savedInstanceState);
 
         rootPresenter = new RootPresenter(getContext(), this);
-        films = new ArrayList<>();
-        filmsAdapter = new FilmsAdapter(getContext());
+        people = new ArrayList<>();
+        peopleAdapter = new PeopleAdapter(getContext());
     }
 
     @Override
@@ -77,25 +74,15 @@ public class FilmsFragment extends BaseFragment implements IServicesContract.Vie
         showProgress();
         setupRecyclerView();
 
-        txvTitle.setText("Films");
-        imvTitle.setImageDrawable(getResources().getDrawable(R.drawable.ic_films_2));
+        txvTitle.setText("People");
+        imvTitle.setImageDrawable(getResources().getDrawable(R.drawable.ic_people));
 
-        List<ServiceFilmResponse> films = null;
-        try {
-            films = new ManagerDbAsync.GetAllDataFromDbAsync(FilmsRoomDatabase.getDatabase(getContext())).execute().get();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        }
-
-        if (films != null && films.size() == 0) {
-            rootPresenter.requestFilms();
+        if (people != null && people.size() == 0) {
+            rootPresenter.requestPeople();
         } else {
-            filmsAdapter.replaceData(films);
+            peopleAdapter.replaceData(people);
             hideProgress();
         }
-
     }
 
     @Override
@@ -109,20 +96,18 @@ public class FilmsFragment extends BaseFragment implements IServicesContract.Vie
     }
 
     private void setupRecyclerView() {
-        rvFilms.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
-        rvFilms.setAdapter(filmsAdapter);
+        rvPeople.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
+        rvPeople.setAdapter(peopleAdapter);
     }
 
     @Override
     public void showResponse(ServicesResponse response) {
-
         try {
-            List<ServiceFilmResponse> listResponse = (List<ServiceFilmResponse>) response.getResponse();
-            filmsAdapter.replaceData(listResponse);
-            new ManagerDbAsync.InsertDataToDbAsync(FilmsRoomDatabase.getDatabase(getContext()), listResponse).execute();
+            List<ServicePeopleResponse> listResponse = (List<ServicePeopleResponse>) response.getResponse();
+            peopleAdapter.replaceData(listResponse);
+
         } catch (Exception e) {
         }
-
     }
 
     @Override
@@ -139,5 +124,4 @@ public class FilmsFragment extends BaseFragment implements IServicesContract.Vie
     public void hideProgress() {
         iProgressLayout.getProgress().setVisibility(View.GONE);
     }
-
 }

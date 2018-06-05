@@ -1,6 +1,7 @@
 package com.geovanni.studioghibli.views.bussiness.interfaces;
 
 import com.geovanni.studioghibli.views.bussiness.models.ServiceFilmResponse;
+import com.geovanni.studioghibli.views.bussiness.models.ServicePeopleResponse;
 import com.geovanni.studioghibli.views.bussiness.utils.ServicesConstants;
 
 import java.util.List;
@@ -16,4 +17,8 @@ public interface IServicesRetrofitMethods {
     @GET(ServicesConstants.GET_FILMS_API)
     Call<List<ServiceFilmResponse>> getFilms();
 
+    //***************************************   getPeople *******************************
+    @Headers("Content-Type: application/json")
+    @GET(ServicesConstants.GET_PEOPLE_API)
+    Call<List<ServicePeopleResponse>> getPeople();
 }
