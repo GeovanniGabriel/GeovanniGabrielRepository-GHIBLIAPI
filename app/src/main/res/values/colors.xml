@@ -6,8 +6,8 @@
     <color name="colorBackgroundSplashScreen">#66cc00</color>
     <color name="colorButtonMenu">#006900</color>
 
-    <color name="white">#ffffff</color>
     <color name="colorBackgroundFilms">#b3e5fc</color>
+    <color name="colorBackgroundTitle">#8d6e63</color>
 
     <color name="transparent51">#51FFFFFF</color>
     <color name="slateGreyTwo">#514e62</color>

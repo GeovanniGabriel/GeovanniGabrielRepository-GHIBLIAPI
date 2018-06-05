@@ -4,9 +4,10 @@
     android:id="@+id/content_element"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="5dp"
+    android:layout_marginBottom="2dp"
     android:layout_marginLeft="5dp"
     android:layout_marginRight="5dp"
+    android:layout_marginTop="5dp"
     android:elevation="1dp"
     android:orientation="horizontal"
     app:cardCornerRadius="4dp"
@@ -16,7 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:maxHeight="180dp"
-        android:minHeight="160dp">
+        android:minHeight="175dp">
 
         <android.support.constraint.Guideline
             android:id="@+id/guideline5"
@@ -30,7 +31,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.95" />
+            app:layout_constraintGuide_percent="0.96" />
 
         <android.support.constraint.Guideline
             android:id="@+id/guideline2"
@@ -51,7 +52,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.75" />
+            app:layout_constraintGuide_percent="0.74" />
 
         <android.support.constraint.Guideline
             android:id="@+id/guideline6"
@@ -112,7 +113,7 @@
             <ImageView
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:layout_margin="5dp"
+                android:layout_margin="10dp"
                 android:src="@drawable/i_flecha"
                 app:layout_constraintBottom_toBottomOf="@id/guideline8"
                 app:layout_constraintEnd_toEndOf="parent"
