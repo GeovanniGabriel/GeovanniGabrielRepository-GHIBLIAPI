@@ -3,10 +3,15 @@ package com.geovanni.studioghibli.views.views.activitys;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.widget.RelativeLayout;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.geovanni.studioghibli.R;
 import com.geovanni.studioghibli.views.bussiness.interfaces.IProgressLayout;
+import com.geovanni.studioghibli.views.bussiness.interfaces.IToolbarListener;
 import com.geovanni.studioghibli.views.customViews.ProgressLayout;
 import com.geovanni.studioghibli.views.views.base.BaseActivity;
 import com.geovanni.studioghibli.views.views.fragments.FilmsFragment;
@@ -14,12 +19,21 @@ import com.geovanni.studioghibli.views.views.fragments.PeopleFragment;
 
 import butterknife.BindView;
 
-public class SectionActivity extends BaseActivity implements IProgressLayout {
+public class SectionActivity extends BaseActivity implements IProgressLayout, IToolbarListener {
 
     private int section;
 
     @BindView(R.id.rdbFragment)
-    RelativeLayout rdbFragment;
+    FrameLayout rdbFragment;
+
+    @BindView(R.id.tbHome)
+    Toolbar tbHome;
+
+    @BindView(R.id.imvTitleToolBar)
+    ImageView imvTitleToolBar;
+
+    @BindView(R.id.txvTitleToolBar)
+    TextView txvTitleToolBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +51,13 @@ public class SectionActivity extends BaseActivity implements IProgressLayout {
     @Override
     protected void initViews() {
         super.initViews();
+        setSupportActionBar(tbHome);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.items_toolbar, menu);
+        return super.onCreateOptionsMenu(menu);
     }
 
     private void ReplaceMainFragment() {
@@ -84,5 +105,11 @@ public class SectionActivity extends BaseActivity implements IProgressLayout {
     @Override
     public ProgressLayout getProgress() {
         return getProgressLayout();
+    }
+
+    @Override
+    public void updateToolbar(String title, int imageResource) {
+        imvTitleToolBar.setImageResource(imageResource);
+        txvTitleToolBar.setText(title);
     }
 }

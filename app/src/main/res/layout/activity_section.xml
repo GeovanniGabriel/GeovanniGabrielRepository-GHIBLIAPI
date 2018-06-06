@@ -1,11 +1,17 @@
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/coordinator"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/colorBackgroundFilms">
 
-    <RelativeLayout
+    <include layout="@layout/toolbar_home_layout" />
+
+    <FrameLayout
         android:id="@+id/rdbFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
     <com.geovanni.studioghibli.views.customViews.ProgressLayout
         android:id="@+id/plLoading"
@@ -13,4 +19,4 @@
         android:layout_height="match_parent"
         android:visibility="gone" />
 
-</android.support.constraint.ConstraintLayout>
+</android.support.design.widget.CoordinatorLayout>

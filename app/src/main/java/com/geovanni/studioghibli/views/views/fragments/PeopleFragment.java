@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.geovanni.studioghibli.R;
 import com.geovanni.studioghibli.views.bussiness.interfaces.IProgressLayout;
 import com.geovanni.studioghibli.views.bussiness.interfaces.IServicesContract;
+import com.geovanni.studioghibli.views.bussiness.interfaces.IToolbarListener;
 import com.geovanni.studioghibli.views.bussiness.models.ServicePeopleResponse;
 import com.geovanni.studioghibli.views.bussiness.presenters.RootPresenter;
 import com.geovanni.studioghibli.views.bussiness.utils.ServicesError;
@@ -36,12 +37,6 @@ public class PeopleFragment extends BaseFragment implements IServicesContract.Vi
 
     @BindView(R.id.rvGeneralData)
     RecyclerView rvPeople;
-
-    @BindView(R.id.txvTitle)
-    TextView txvTitle;
-
-    @BindView(R.id.imvTitle)
-    ImageView imvTitle;
 
     public static PeopleFragment newInstance() {
         PeopleFragment fragment = new PeopleFragment();
@@ -73,9 +68,7 @@ public class PeopleFragment extends BaseFragment implements IServicesContract.Vi
 
         showProgress();
         setupRecyclerView();
-
-        txvTitle.setText("People");
-        imvTitle.setImageDrawable(getResources().getDrawable(R.drawable.ic_people));
+        showToolbarDefaultMode();
 
         if (people != null && people.size() == 0) {
             rootPresenter.requestPeople();
@@ -123,5 +116,9 @@ public class PeopleFragment extends BaseFragment implements IServicesContract.Vi
     @Override
     public void hideProgress() {
         iProgressLayout.getProgress().setVisibility(View.GONE);
+    }
+
+    private void showToolbarDefaultMode() {
+        updateToolbar("People", R.drawable.ic_people);
     }
 }

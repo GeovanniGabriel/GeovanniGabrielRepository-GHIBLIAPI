@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.geovanni.studioghibli.R;
+import com.geovanni.studioghibli.views.bussiness.interfaces.IToolbarListener;
 import com.geovanni.studioghibli.views.customViews.ProgressLayout;
 
 import butterknife.BindView;
@@ -18,6 +19,7 @@ public abstract class BaseFragment extends Fragment {
 
     private View rootView;
     private Context context;
+    private IToolbarListener toolbarListener;
 
     protected abstract int getLayoutResourceId();
 
@@ -27,6 +29,11 @@ public abstract class BaseFragment extends Fragment {
     public void onAttach(Context context) {
         super.onAttach(context);
         this.context = context;
+        try {
+            toolbarListener = (IToolbarListener) context;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 
     @Nullable
@@ -35,5 +42,11 @@ public abstract class BaseFragment extends Fragment {
         rootView = inflater.inflate(getLayoutResourceId(), container, false);
         ButterKnife.bind(this, rootView);
         return rootView;
+    }
+
+    protected void updateToolbar(String title, int imageResource) {
+        if (toolbarListener != null) {
+            toolbarListener.updateToolbar(title, imageResource);
+        }
     }
 }

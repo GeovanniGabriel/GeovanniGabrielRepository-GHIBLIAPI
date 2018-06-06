@@ -12,8 +12,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.geovanni.studioghibli.R;
+import com.geovanni.studioghibli.views.bussiness.interfaces.IItemListener;
 import com.geovanni.studioghibli.views.bussiness.interfaces.IProgressLayout;
 import com.geovanni.studioghibli.views.bussiness.interfaces.IServicesContract;
+import com.geovanni.studioghibli.views.bussiness.interfaces.IToolbarListener;
 import com.geovanni.studioghibli.views.bussiness.models.ServiceFilmResponse;
 import com.geovanni.studioghibli.views.bussiness.presenters.RootPresenter;
 import com.geovanni.studioghibli.views.bussiness.utils.ServicesError;
@@ -39,12 +41,6 @@ public class FilmsFragment extends BaseFragment implements IServicesContract.Vie
 
     @BindView(R.id.rvGeneralData)
     RecyclerView rvFilms;
-
-    @BindView(R.id.txvTitle)
-    TextView txvTitle;
-
-    @BindView(R.id.imvTitle)
-    ImageView imvTitle;
 
     public static FilmsFragment newInstance() {
         FilmsFragment fragment = new FilmsFragment();
@@ -76,9 +72,7 @@ public class FilmsFragment extends BaseFragment implements IServicesContract.Vie
 
         showProgress();
         setupRecyclerView();
-
-        txvTitle.setText("Films");
-        imvTitle.setImageDrawable(getResources().getDrawable(R.drawable.ic_films_2));
+        showToolbarDefaultMode();
 
         List<ServiceFilmResponse> films = null;
         try {
@@ -109,7 +103,7 @@ public class FilmsFragment extends BaseFragment implements IServicesContract.Vie
     }
 
     private void setupRecyclerView() {
-        rvFilms.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
+        rvFilms.setLayoutManager(new LinearLayoutManager(getContext()));
         rvFilms.setAdapter(filmsAdapter);
     }
 
@@ -140,4 +134,7 @@ public class FilmsFragment extends BaseFragment implements IServicesContract.Vie
         iProgressLayout.getProgress().setVisibility(View.GONE);
     }
 
+    private void showToolbarDefaultMode() {
+        updateToolbar("Films", R.drawable.ic_films_2);
+    }
 }
