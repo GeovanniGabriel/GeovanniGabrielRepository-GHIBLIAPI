@@ -91,7 +91,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:maxLines="1"
-                android:textSize="18sp"
+                android:textSize="16dp"
                 app:layout_constraintBottom_toBottomOf="@id/guideline8"
                 app:layout_constraintEnd_toEndOf="@id/guideline7"
                 app:layout_constraintStart_toStartOf="parent"
@@ -104,7 +104,7 @@
                 android:layout_weight="1"
                 android:ellipsize="end"
                 android:maxLines="4"
-                android:textSize="14sp"
+                android:textSize="14dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -147,7 +147,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:maxLines="1" />
+                android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/txvReleaseDate"
@@ -155,8 +155,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ellipsize="end"
-                android:maxLines="1"
-                android:textSize="14sp" />
+                android:textSize="12dp" />
 
         </LinearLayout>
 

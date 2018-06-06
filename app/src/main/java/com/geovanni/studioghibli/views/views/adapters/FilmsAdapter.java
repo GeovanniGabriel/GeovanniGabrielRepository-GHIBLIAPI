@@ -1,6 +1,7 @@
 package com.geovanni.studioghibli.views.views.adapters;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -21,6 +22,7 @@ public class FilmsAdapter extends RecyclerView.Adapter<FilmsAdapter.ViewHolder> 
 
     private List<ServiceFilmResponse> films;
     private Context context;
+    private Typeface lightGhibli, boldGhibli;
 
     public FilmsAdapter(Context context) {
         this.films = new ArrayList<>();
@@ -32,6 +34,8 @@ public class FilmsAdapter extends RecyclerView.Adapter<FilmsAdapter.ViewHolder> 
 
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_film_row, parent, false);
         ViewHolder viewHolder = new ViewHolder(view);
+        lightGhibli = Typeface.createFromAsset(context.getAssets(), "fonts/ghibli.ttf");
+        boldGhibli = Typeface.createFromAsset(context.getAssets(), "fonts/ghibli_bold.ttf");
         return viewHolder;
     }
 
@@ -40,10 +44,17 @@ public class FilmsAdapter extends RecyclerView.Adapter<FilmsAdapter.ViewHolder> 
 
         ServiceFilmResponse film = films.get(position);
 
-        holder.nameFilmTextView.setText(film.getTitle());
+        holder.txvNameFilm.setText(film.getTitle());
+        holder.txvNameFilm.setTypeface(boldGhibli);
+
         holder.txvDirector.setText("Director: " + film.getDirector());
-        holder.txvReleaseDate.setText("Release date: " + film.getReleaseDate());
+        holder.txvDirector.setTypeface(lightGhibli);
+
+        holder.txvReleaseDate.setText("Release date: " + film.getRelease_date());
+        holder.txvReleaseDate.setTypeface(lightGhibli);
+
         holder.txvDescription.setText(film.getDescription());
+        holder.txvDescription.setTypeface(lightGhibli);
 
 
         switch (film.getTitle()) {
@@ -160,14 +171,14 @@ public class FilmsAdapter extends RecyclerView.Adapter<FilmsAdapter.ViewHolder> 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         private ImageView imvFilm;
-        private TextView txvDirector, nameFilmTextView, txvReleaseDate, txvDescription;
+        private TextView txvDirector, txvNameFilm, txvReleaseDate, txvDescription;
 
         public ViewHolder(View itemView) {
             super(itemView);
 
             imvFilm = (ImageView) itemView.findViewById(R.id.imvFilm);
             txvDirector = (TextView) itemView.findViewById(R.id.txvDirector);
-            nameFilmTextView = (TextView) itemView.findViewById(R.id.txvNameFilm);
+            txvNameFilm = (TextView) itemView.findViewById(R.id.txvNameFilm);
             txvReleaseDate = (TextView) itemView.findViewById(R.id.txvReleaseDate);
             txvDescription = (TextView) itemView.findViewById(R.id.txvDescription);
 

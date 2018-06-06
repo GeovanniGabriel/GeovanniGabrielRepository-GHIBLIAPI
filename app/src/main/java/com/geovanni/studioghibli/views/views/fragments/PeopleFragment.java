@@ -8,13 +8,10 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.geovanni.studioghibli.R;
 import com.geovanni.studioghibli.views.bussiness.interfaces.IProgressLayout;
 import com.geovanni.studioghibli.views.bussiness.interfaces.IServicesContract;
-import com.geovanni.studioghibli.views.bussiness.interfaces.IToolbarListener;
 import com.geovanni.studioghibli.views.bussiness.models.ServicePeopleResponse;
 import com.geovanni.studioghibli.views.bussiness.presenters.RootPresenter;
 import com.geovanni.studioghibli.views.bussiness.utils.ServicesError;

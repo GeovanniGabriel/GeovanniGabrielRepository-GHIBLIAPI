@@ -1,12 +1,9 @@
 package com.geovanni.studioghibli.views.helpers;
 
 import android.arch.persistence.room.TypeConverter;
-import android.renderscript.Sampler;
 
 import com.google.gson.Gson;
 
-import java.sql.Array;
-import java.util.Arrays;
 import java.util.List;
 
 public class Converters {

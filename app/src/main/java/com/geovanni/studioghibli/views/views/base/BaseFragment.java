@@ -8,11 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.geovanni.studioghibli.R;
 import com.geovanni.studioghibli.views.bussiness.interfaces.IToolbarListener;
-import com.geovanni.studioghibli.views.customViews.ProgressLayout;
 
-import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public abstract class BaseFragment extends Fragment {

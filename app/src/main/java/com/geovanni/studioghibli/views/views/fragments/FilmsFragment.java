@@ -2,20 +2,17 @@ package com.geovanni.studioghibli.views.views.fragments;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.geovanni.studioghibli.R;
-import com.geovanni.studioghibli.views.bussiness.interfaces.IItemListener;
 import com.geovanni.studioghibli.views.bussiness.interfaces.IProgressLayout;
 import com.geovanni.studioghibli.views.bussiness.interfaces.IServicesContract;
-import com.geovanni.studioghibli.views.bussiness.interfaces.IToolbarListener;
 import com.geovanni.studioghibli.views.bussiness.models.ServiceFilmResponse;
 import com.geovanni.studioghibli.views.bussiness.presenters.RootPresenter;
 import com.geovanni.studioghibli.views.bussiness.utils.ServicesError;
@@ -38,6 +35,7 @@ public class FilmsFragment extends BaseFragment implements IServicesContract.Vie
     private FilmsAdapter filmsAdapter;
     private List<ServiceFilmResponse> films;
     private IProgressLayout iProgressLayout;
+    private Typeface lightGhibli, boldGhibli;
 
     @BindView(R.id.rvGeneralData)
     RecyclerView rvFilms;
@@ -73,6 +71,9 @@ public class FilmsFragment extends BaseFragment implements IServicesContract.Vie
         showProgress();
         setupRecyclerView();
         showToolbarDefaultMode();
+
+        lightGhibli = Typeface.createFromAsset(getContext().getAssets(), "fonts/ghibli.ttf");
+        boldGhibli = Typeface.createFromAsset(getContext().getAssets(), "fonts/ghibli_bold.ttf");
 
         List<ServiceFilmResponse> films = null;
         try {

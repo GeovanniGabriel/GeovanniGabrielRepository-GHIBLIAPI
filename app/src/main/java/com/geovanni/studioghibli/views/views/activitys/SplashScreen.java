@@ -8,7 +8,6 @@ import android.view.WindowManager;
 
 import com.geovanni.studioghibli.R;
 import com.geovanni.studioghibli.views.bussiness.utils.NavigationUtil;
-import com.geovanni.studioghibli.views.views.base.BaseActivity;
 
 public class SplashScreen extends Activity {
 

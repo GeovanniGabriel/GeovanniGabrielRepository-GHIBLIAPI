@@ -7,9 +7,6 @@ import android.support.annotation.NonNull;
 
 @Entity
 public class ServiceFilmResponse {
-
-
-
     @PrimaryKey
     @NonNull
     private String id;
@@ -21,18 +18,10 @@ public class ServiceFilmResponse {
     private String director;
     @ColumnInfo(name = "producer")
     private String producer;
-    @ColumnInfo(name = "releaseDate")
-    private String releaseDate;
+    @ColumnInfo(name = "release_date")
+    private String release_date;
     @ColumnInfo(name = "rtScore")
     private String rtScore;
-//    @TypeConverter(Converters.class)
-//    private List<String> people = null;
-//    @TypeConverter(Converters.class)
-//    private List<String> species = null;
-//    @TypeConverter(Converters.class)
-//    private List<String> locations = null;
-//    @TypeConverter(Converters.class)
-//    private List<String> vehicles = null;
     @ColumnInfo(name = "url")
     private String url;
 
@@ -76,12 +65,12 @@ public class ServiceFilmResponse {
         this.producer = producer;
     }
 
-    public String getReleaseDate() {
-        return releaseDate;
+    public String getRelease_date() {
+        return release_date;
     }
 
-    public void setReleaseDate(String releaseDate) {
-        this.releaseDate = releaseDate;
+    public void setRelease_date(String release_date) {
+        this.release_date = release_date;
     }
 
     public String getRtScore() {
@@ -91,38 +80,6 @@ public class ServiceFilmResponse {
     public void setRtScore(String rtScore) {
         this.rtScore = rtScore;
     }
-
-//    public List<String> getPeople() {
-//        return people;
-//    }
-//
-//    public void setPeople(List<String> people) {
-//        this.people = people;
-//    }
-//
-//    public List<String> getSpecies() {
-//        return species;
-//    }
-//
-//    public void setSpecies(List<String> species) {
-//        this.species = species;
-//    }
-//
-//    public List<String> getLocations() {
-//        return locations;
-//    }
-//
-//    public void setLocations(List<String> locations) {
-//        this.locations = locations;
-//    }
-//
-//    public List<String> getVehicles() {
-//        return vehicles;
-//    }
-//
-//    public void setVehicles(List<String> vehicles) {
-//        this.vehicles = vehicles;
-//    }
 
     public String getUrl() {
         return url;

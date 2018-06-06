@@ -1,7 +1,5 @@
 package com.geovanni.studioghibli.views.bussiness.utils;
 
-import org.json.JSONObject;
-
 public class ServicesError {
 
     private String message = "";

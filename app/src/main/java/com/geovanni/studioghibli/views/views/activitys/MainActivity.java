@@ -1,7 +1,9 @@
 package com.geovanni.studioghibli.views.views.activitys;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
+import android.widget.TextView;
 
 import com.geovanni.studioghibli.R;
 import com.geovanni.studioghibli.views.bussiness.interfaces.IProgressLayout;
@@ -44,6 +46,10 @@ public class MainActivity extends BaseActivity implements OnBMClickListener, IPr
         menuItemList.add(new MenuItem(R.string.species, R.drawable.ic_species, R.string.sub_species));
         menuItemList.add(new MenuItem(R.string.vehicles, R.drawable.ic_vehicles, R.string.sub_vehicles));
 
+        Typeface face = face = Typeface.createFromAsset(getAssets(), "fonts/ghibli.ttf");
+        TextView txv = new TextView(this);
+        txv.setTypeface(face);
+
         for (int i = 0; i < bmb.getPiecePlaceEnum().pieceNumber(); i++) {
             HamButton.Builder builder = new HamButton.Builder()
                     .normalImageRes(menuItemList.get(i).getImage())
@@ -51,6 +57,7 @@ public class MainActivity extends BaseActivity implements OnBMClickListener, IPr
                     .subNormalTextRes(menuItemList.get(i).getDescription())
                     .shadowEffect(true)
                     .rippleEffect(true)
+                    .typeface(face)
                     .listener(this);
             bmb.addBuilder(builder);
         }
