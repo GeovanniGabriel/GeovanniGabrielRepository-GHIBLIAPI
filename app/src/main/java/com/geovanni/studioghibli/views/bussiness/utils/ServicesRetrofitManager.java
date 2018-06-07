@@ -30,4 +30,13 @@ public class ServicesRetrofitManager {
                 .build();
         return retrofit;
     }
+
+    public Retrofit getRetrofitGitHubAPI() {
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(ServicesConstants.URL_BASE_GIT)
+                .addConverterFactory(GsonConverterFactory.create())
+                .client(okHttpClient)
+                .build();
+        return retrofit;
+    }
 }

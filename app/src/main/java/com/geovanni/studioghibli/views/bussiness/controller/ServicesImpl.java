@@ -5,6 +5,7 @@ import android.content.Context;
 import com.geovanni.studioghibli.views.bussiness.interfaces.IServiceListener;
 import com.geovanni.studioghibli.views.bussiness.interfaces.IServicesRetrofitMethods;
 import com.geovanni.studioghibli.views.bussiness.models.ServiceFilmResponse;
+import com.geovanni.studioghibli.views.bussiness.models.ServiceImages;
 import com.geovanni.studioghibli.views.bussiness.models.ServicePeopleResponse;
 import com.geovanni.studioghibli.views.bussiness.utils.ServicesError;
 import com.geovanni.studioghibli.views.bussiness.utils.ServicesResponse;
@@ -22,14 +23,20 @@ public class ServicesImpl {
 
     private Context context;
     private Retrofit retrofit;
+    private Retrofit retrofitGit;
     private IServiceListener iServiceListener;
     private IServicesRetrofitMethods iServicesRetrofitMethods;
+    private IServicesRetrofitMethods iServicesRetrofitMethodsGit;
     private ServicesUtilities servicesUtilities;
 
     public ServicesImpl(Context context) {
         this.context = context;
         retrofit = ServicesRetrofitManager.getInstance().getRetrofitAPI();
         iServicesRetrofitMethods = retrofit.create(IServicesRetrofitMethods.class);
+
+        retrofitGit = ServicesRetrofitManager.getInstance().getRetrofitGitHubAPI();
+        iServicesRetrofitMethodsGit = retrofitGit.create(IServicesRetrofitMethods.class);
+
         servicesUtilities = new ServicesUtilities();
     }
 
@@ -74,6 +81,30 @@ public class ServicesImpl {
 
             @Override
             public void onFailure(Call<List<ServicePeopleResponse>> call, Throwable t) {
+                servicesError.setMessage("");
+                servicesError.setType(1);
+                iServiceListener.onError(servicesError);
+            }
+        });
+    }
+
+    /* *******************************************************************************************************************************************************
+    *****************************************************               getImages            **********************************************************
+    *********************************************************************************************************************************************************/
+
+    public void getImagesToFilms() {
+        final ServicesError servicesError = new ServicesError();
+
+        iServicesRetrofitMethodsGit.getImages().enqueue(new Callback<List<ServiceImages>>() {
+            @Override
+            public void onResponse(Call<List<ServiceImages>> call, Response<List<ServiceImages>> response) {
+                ServicesResponse<List<ServiceImages>> servicesResponse = new ServicesResponse<>();
+                servicesResponse.setResponse(response.body());
+                iServiceListener.onResponse(servicesResponse);
+            }
+
+            @Override
+            public void onFailure(Call<List<ServiceImages>> call, Throwable t) {
                 servicesError.setMessage("");
                 servicesError.setType(1);
                 iServiceListener.onError(servicesError);

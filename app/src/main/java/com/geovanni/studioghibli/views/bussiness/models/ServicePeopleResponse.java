@@ -5,10 +5,6 @@ import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
-/**
- * @author Broxel Labs.
- */
-
 @Entity
 public class ServicePeopleResponse {
 
