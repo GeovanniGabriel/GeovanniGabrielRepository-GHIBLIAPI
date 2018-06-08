@@ -14,10 +14,12 @@ import com.geovanni.studioghibli.R;
 import com.geovanni.studioghibli.views.bussiness.interfaces.IProgressLayout;
 import com.geovanni.studioghibli.views.bussiness.interfaces.IServicesContract;
 import com.geovanni.studioghibli.views.bussiness.models.ServiceFilmResponse;
+import com.geovanni.studioghibli.views.bussiness.models.ServiceImagesResponse;
 import com.geovanni.studioghibli.views.bussiness.presenters.RootPresenter;
 import com.geovanni.studioghibli.views.bussiness.utils.ServicesError;
 import com.geovanni.studioghibli.views.bussiness.utils.ServicesResponse;
 import com.geovanni.studioghibli.views.entityDao.roomDataBase.FilmsRoomDatabase;
+import com.geovanni.studioghibli.views.entityDao.roomDataBase.ImagesRoomDatabase;
 import com.geovanni.studioghibli.views.entityDao.roomDataBase.ManagerDbAsync;
 import com.geovanni.studioghibli.views.views.adapters.FilmsAdapter;
 import com.geovanni.studioghibli.views.views.base.BaseFragment;
@@ -34,6 +36,7 @@ public class FilmsFragment extends BaseFragment implements IServicesContract.Vie
     private RootPresenter rootPresenter;
     private FilmsAdapter filmsAdapter;
     private List<ServiceFilmResponse> films;
+    private List<ServiceImagesResponse> images;
     private IProgressLayout iProgressLayout;
     private Typeface lightGhibli, boldGhibli;
 
@@ -61,6 +64,7 @@ public class FilmsFragment extends BaseFragment implements IServicesContract.Vie
 
         rootPresenter = new RootPresenter(getContext(), this);
         films = new ArrayList<>();
+        images = new ArrayList<>();
         filmsAdapter = new FilmsAdapter(getContext());
     }
 
@@ -75,9 +79,9 @@ public class FilmsFragment extends BaseFragment implements IServicesContract.Vie
         lightGhibli = Typeface.createFromAsset(getContext().getAssets(), "fonts/ghibli.ttf");
         boldGhibli = Typeface.createFromAsset(getContext().getAssets(), "fonts/ghibli_bold.ttf");
 
-        List<ServiceFilmResponse> films = null;
         try {
             films = new ManagerDbAsync.GetAllDataFromDbAsync(FilmsRoomDatabase.getDatabase(getContext())).execute().get();
+            images = new ManagerDbAsync.GetImagesFromDbAsync(ImagesRoomDatabase.getDatabase(getContext())).execute().get();
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
@@ -87,7 +91,7 @@ public class FilmsFragment extends BaseFragment implements IServicesContract.Vie
         if (films != null && films.size() == 0) {
             rootPresenter.requestFilms();
         } else {
-            filmsAdapter.replaceData(films);
+            filmsAdapter.replaceData(films, images);
             hideProgress();
         }
 
@@ -113,7 +117,7 @@ public class FilmsFragment extends BaseFragment implements IServicesContract.Vie
 
         try {
             List<ServiceFilmResponse> listResponse = (List<ServiceFilmResponse>) response.getResponse();
-            filmsAdapter.replaceData(listResponse);
+            filmsAdapter.replaceData(listResponse, images);
             new ManagerDbAsync.InsertDataToDbAsync(FilmsRoomDatabase.getDatabase(getContext()), listResponse).execute();
         } catch (Exception e) {
         }

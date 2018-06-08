@@ -5,7 +5,7 @@ import android.content.Context;
 import com.geovanni.studioghibli.views.bussiness.interfaces.IServiceListener;
 import com.geovanni.studioghibli.views.bussiness.interfaces.IServicesRetrofitMethods;
 import com.geovanni.studioghibli.views.bussiness.models.ServiceFilmResponse;
-import com.geovanni.studioghibli.views.bussiness.models.ServiceImages;
+import com.geovanni.studioghibli.views.bussiness.models.ServiceImagesResponse;
 import com.geovanni.studioghibli.views.bussiness.models.ServicePeopleResponse;
 import com.geovanni.studioghibli.views.bussiness.utils.ServicesError;
 import com.geovanni.studioghibli.views.bussiness.utils.ServicesResponse;
@@ -95,16 +95,16 @@ public class ServicesImpl {
     public void getImagesToFilms() {
         final ServicesError servicesError = new ServicesError();
 
-        iServicesRetrofitMethodsGit.getImages().enqueue(new Callback<List<ServiceImages>>() {
+        iServicesRetrofitMethodsGit.getImages().enqueue(new Callback<List<ServiceImagesResponse>>() {
             @Override
-            public void onResponse(Call<List<ServiceImages>> call, Response<List<ServiceImages>> response) {
-                ServicesResponse<List<ServiceImages>> servicesResponse = new ServicesResponse<>();
+            public void onResponse(Call<List<ServiceImagesResponse>> call, Response<List<ServiceImagesResponse>> response) {
+                ServicesResponse<List<ServiceImagesResponse>> servicesResponse = new ServicesResponse<>();
                 servicesResponse.setResponse(response.body());
                 iServiceListener.onResponse(servicesResponse);
             }
 
             @Override
-            public void onFailure(Call<List<ServiceImages>> call, Throwable t) {
+            public void onFailure(Call<List<ServiceImagesResponse>> call, Throwable t) {
                 servicesError.setMessage("");
                 servicesError.setType(1);
                 iServiceListener.onError(servicesError);

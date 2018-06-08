@@ -1,9 +1,5 @@
 package com.geovanni.studioghibli.views.bussiness.interfaces;
 
-/**
- * @author Broxel Labs.
- */
-
 public interface IToolbarListener {
 
     class ToolbarSettings {

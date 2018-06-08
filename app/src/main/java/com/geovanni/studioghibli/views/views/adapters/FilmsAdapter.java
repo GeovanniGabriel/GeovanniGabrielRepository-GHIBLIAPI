@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.geovanni.studioghibli.R;
 import com.geovanni.studioghibli.views.bussiness.models.ServiceFilmResponse;
+import com.geovanni.studioghibli.views.bussiness.models.ServiceImagesResponse;
 import com.squareup.picasso.MemoryPolicy;
 import com.squareup.picasso.Picasso;
 
@@ -21,11 +22,13 @@ import java.util.List;
 public class FilmsAdapter extends RecyclerView.Adapter<FilmsAdapter.ViewHolder> {
 
     private List<ServiceFilmResponse> films;
+    private List<ServiceImagesResponse> images;
     private Context context;
     private Typeface lightGhibli, boldGhibli;
 
     public FilmsAdapter(Context context) {
         this.films = new ArrayList<>();
+        this.images = new ArrayList<>();
         this.context = context;
     }
 
@@ -56,100 +59,22 @@ public class FilmsAdapter extends RecyclerView.Adapter<FilmsAdapter.ViewHolder> 
         holder.txvDescription.setText(film.getDescription());
         holder.txvDescription.setTypeface(lightGhibli);
 
-
-        switch (film.getTitle()) {
-            case "Castle in the Sky":
-                setImageToFilm(holder, R.drawable.ic_castle_in_the_sky);
-                break;
-
-            case "Grave of the Fireflies":
-                setImageToFilm(holder, R.drawable.ic_grave_of_the_fireflies);
-                break;
-
-            case "My Neighbor Totoro":
-                setImageToFilm(holder, R.drawable.ic_my_neighbor_totoro);
-                break;
-
-            case "Kiki's Delivery Service":
-                setImageToFilm(holder, R.drawable.ic_kikis_delivery_service);
-                break;
-
-            case "Only Yesterday":
-                setImageToFilm(holder, R.drawable.ic_only_yesterday);
-                break;
-
-            case "Porco Rosso":
-                setImageToFilm(holder, R.drawable.ic_porco_rosso);
-                break;
-
-            case "Pom Poko":
-                setImageToFilm(holder, R.drawable.ic_pom_poko);
-                break;
-
-            case "Whisper of the Heart":
-                setImageToFilm(holder, R.drawable.ic_whisper_of_the_heart);
-                break;
-
-            case "Princess Mononoke":
-                setImageToFilm(holder, R.drawable.ic_princess_mononoke);
-                break;
-
-            case "My Neighbors the Yamadas":
-                setImageToFilm(holder, R.drawable.ic_my_neighbors_the_yamadas);
-                break;
-
-            case "Spirited Away":
-                setImageToFilm(holder, R.drawable.ic_spirited_away);
-                break;
-
-            case "The Cat Returns":
-                setImageToFilm(holder, R.drawable.ic_the_cat_returns);
-                break;
-
-            case "Howl's Moving Castle":
-                setImageToFilm(holder, R.drawable.ic_howls_moving_castle);
-                break;
-
-            case "Tales from Earthsea":
-                setImageToFilm(holder, R.drawable.ic_tales_from_earthsea);
-                break;
-
-            case "Ponyo":
-                setImageToFilm(holder, R.drawable.ic_ponyo);
-                break;
-
-            case "Arrietty":
-                setImageToFilm(holder, R.drawable.ic_arrietty);
-                break;
-
-            case "From Up on Poppy Hill":
-                setImageToFilm(holder, R.drawable.ic_from_on_poppy_hill);
-                break;
-
-            case "The Wind Rises":
-                setImageToFilm(holder, R.drawable.ic_the_wind_rises);
-                break;
-
-            case "The Tale of the Princess Kaguya":
-                setImageToFilm(holder, R.drawable.ic_tale_of_the_princess_kaguya);
-                break;
-
-            case "When Marnie Was There":
-                setImageToFilm(holder, R.drawable.ic_when_marine_was_there);
-                break;
-
-            default:
-                setImageToFilm(holder, R.drawable.ic_studio_ghibli);
-                break;
-
+        if (images != null && images.size() > 0) {
+            for (ServiceImagesResponse image : images) {
+                if (image.getTitle().equals(film.getTitle())) {
+                    setImageToFilm(holder, image.getUrl());
+                }
+            }
+        } else {
+            setImageToFilm(holder, "");
         }
 
     }
 
-    private void setImageToFilm(ViewHolder holder, int resourceId) {
+    private void setImageToFilm(ViewHolder holder, String url) {
         Picasso.get()
-                .load(resourceId)
-                .error(resourceId)
+                .load(url)
+                .error(R.drawable.ic_studio_ghibli)
                 .memoryPolicy(MemoryPolicy.NO_CACHE, MemoryPolicy.NO_STORE)
                 .placeholder(R.drawable.ic_studio_ghibli)
                 .fit().centerCrop()
@@ -161,9 +86,12 @@ public class FilmsAdapter extends RecyclerView.Adapter<FilmsAdapter.ViewHolder> 
         return films.size();
     }
 
-    public void replaceData(List<ServiceFilmResponse> films) {
+    public void replaceData(List<ServiceFilmResponse> films, List<ServiceImagesResponse> images) {
         if (films != null) {
             this.films = films;
+        }
+        if (images != null) {
+            this.images = images;
         }
         notifyDataSetChanged();
     }

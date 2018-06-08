@@ -43,7 +43,6 @@ public class SectionActivity extends BaseActivity implements IProgressLayout, IT
         if (getIntent() != null) {
             section = getIntent().getIntExtra("_Section", 0);
         }
-
         initViews();
         ReplaceMainFragment();
     }

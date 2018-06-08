@@ -1,10 +1,13 @@
 package com.geovanni.studioghibli.views.bussiness.models;
 
 import android.arch.persistence.room.ColumnInfo;
+import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
-public class ServiceImages {
+@Entity
+public class ServiceImagesResponse {
+
     @PrimaryKey
     @NonNull
     private String id;
@@ -13,6 +16,14 @@ public class ServiceImages {
     private String title;
     @ColumnInfo(name = "url")
     private String url;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(@NonNull String id) {
+        this.id = id;
+    }
 
     public String getTitle() {
         return title;
