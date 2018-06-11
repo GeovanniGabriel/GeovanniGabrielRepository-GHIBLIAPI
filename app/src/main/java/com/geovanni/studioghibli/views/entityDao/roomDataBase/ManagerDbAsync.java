@@ -3,7 +3,7 @@ package com.geovanni.studioghibli.views.entityDao.roomDataBase;
 import android.os.AsyncTask;
 
 import com.geovanni.studioghibli.views.bussiness.models.ServiceFilmResponse;
-import com.geovanni.studioghibli.views.bussiness.models.ServiceImagesResponse;
+import com.geovanni.studioghibli.views.bussiness.models.ServiceImagesDb;
 import com.geovanni.studioghibli.views.bussiness.models.ServicePeopleResponse;
 import com.geovanni.studioghibli.views.entityDao.interfaces.IServiceFilmsDao;
 import com.geovanni.studioghibli.views.entityDao.interfaces.IServiceImagesDao;
@@ -46,23 +46,23 @@ public class ManagerDbAsync {
 
     public static class InsertImagesToDbAsync extends AsyncTask<Void, Void, Void> {
         private final IServiceImagesDao imagesDao;
-        private final List<ServiceImagesResponse> serviceImagesResponses;
+        private final List<ServiceImagesDb> serviceImagesDbs;
 
-        public InsertImagesToDbAsync(ImagesRoomDatabase db, List<ServiceImagesResponse> serviceImagesResponse) {
+        public InsertImagesToDbAsync(ImagesRoomDatabase db, List<ServiceImagesDb> serviceImagesResponse) {
             imagesDao = db.imagesDao();
-            this.serviceImagesResponses = serviceImagesResponse;
+            this.serviceImagesDbs = serviceImagesResponse;
         }
 
         @Override
         protected Void doInBackground(Void... params) {
-            for (ServiceImagesResponse images : serviceImagesResponses) {
+            for (ServiceImagesDb images : serviceImagesDbs) {
                 imagesDao.insert(images);
             }
             return null;
         }
     }
 
-    public static class GetImagesFromDbAsync extends AsyncTask<Void, Void, List<ServiceImagesResponse>> {
+    public static class GetImagesFromDbAsync extends AsyncTask<Void, Void, List<ServiceImagesDb>> {
         private final IServiceImagesDao imagesDao;
 
         public GetImagesFromDbAsync(ImagesRoomDatabase db) {
@@ -70,7 +70,7 @@ public class ManagerDbAsync {
         }
 
         @Override
-        protected List<ServiceImagesResponse> doInBackground(Void... voids) {
+        protected List<ServiceImagesDb> doInBackground(Void... voids) {
             return imagesDao.getAll();
         }
     }

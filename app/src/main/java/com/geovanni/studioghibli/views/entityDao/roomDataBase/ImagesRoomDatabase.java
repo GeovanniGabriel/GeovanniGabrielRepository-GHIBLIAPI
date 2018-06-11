@@ -8,10 +8,10 @@ import android.arch.persistence.room.Room;
 import android.arch.persistence.room.RoomDatabase;
 import android.content.Context;
 
-import com.geovanni.studioghibli.views.bussiness.models.ServiceImagesResponse;
+import com.geovanni.studioghibli.views.bussiness.models.ServiceImagesDb;
 import com.geovanni.studioghibli.views.entityDao.interfaces.IServiceImagesDao;
 
-@Database(entities = {ServiceImagesResponse.class}, version = 1)
+@Database(entities = {ServiceImagesDb.class}, version = 1)
 public abstract class ImagesRoomDatabase extends RoomDatabase {
 
     private static ImagesRoomDatabase INSTANCE;

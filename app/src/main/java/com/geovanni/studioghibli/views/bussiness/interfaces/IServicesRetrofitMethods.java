@@ -26,5 +26,5 @@ public interface IServicesRetrofitMethods {
     //***************************************   getImages *******************************
     @Headers("Content-Type: application/json")
     @GET(ServicesConstants.GET_IMAGES)
-    Call<List<ServiceImagesResponse>> getImages();
+    Call<ServiceImagesResponse> getImages();
 }

@@ -11,7 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.geovanni.studioghibli.R;
-import com.geovanni.studioghibli.views.bussiness.models.ServiceImagesResponse;
+import com.geovanni.studioghibli.views.bussiness.models.ServiceImagesDb;
 import com.geovanni.studioghibli.views.bussiness.models.ServicePeopleResponse;
 import com.squareup.picasso.MemoryPolicy;
 import com.squareup.picasso.Picasso;
@@ -22,7 +22,7 @@ import java.util.List;
 public class PeopleAdapter extends RecyclerView.Adapter<PeopleAdapter.ViewHolder> {
 
     private List<ServicePeopleResponse> people;
-    private List<ServiceImagesResponse> images;
+    private List<ServiceImagesDb> images;
     private Context context;
     private Typeface lightGhibli, boldGhibli;
 
@@ -54,9 +54,12 @@ public class PeopleAdapter extends RecyclerView.Adapter<PeopleAdapter.ViewHolder
         holder.txvHairColor.setText("Hair Color: " + people.get(position).getHair_color());
 
         if (images != null && images.size() > 0) {
-            for (ServiceImagesResponse image : images) {
-                if (image.getTitle().equals(person.getName())) {
-                    setImageToPerson(holder, image.getUrl());
+            for (ServiceImagesDb image : images) {
+
+                if (image.getSection().equals("People")) {
+                    if (image.getTitle().equals(person.getName())) {
+                        setImageToPerson(holder, image.getUrl());
+                    }
                 }
             }
         } else {
@@ -79,7 +82,7 @@ public class PeopleAdapter extends RecyclerView.Adapter<PeopleAdapter.ViewHolder
         return people.size();
     }
 
-    public void replaceData(List<ServicePeopleResponse> people, List<ServiceImagesResponse> images) {
+    public void replaceData(List<ServicePeopleResponse> people, List<ServiceImagesDb> images) {
         if (people != null) {
             this.people = people;
         }

@@ -14,7 +14,7 @@ import com.geovanni.studioghibli.R;
 import com.geovanni.studioghibli.views.bussiness.interfaces.IProgressLayout;
 import com.geovanni.studioghibli.views.bussiness.interfaces.IServicesContract;
 import com.geovanni.studioghibli.views.bussiness.models.ServiceFilmResponse;
-import com.geovanni.studioghibli.views.bussiness.models.ServiceImagesResponse;
+import com.geovanni.studioghibli.views.bussiness.models.ServiceImagesDb;
 import com.geovanni.studioghibli.views.bussiness.presenters.RootPresenter;
 import com.geovanni.studioghibli.views.bussiness.utils.ServicesError;
 import com.geovanni.studioghibli.views.bussiness.utils.ServicesResponse;
@@ -36,7 +36,7 @@ public class FilmsFragment extends BaseFragment implements IServicesContract.Vie
     private RootPresenter rootPresenter;
     private FilmsAdapter filmsAdapter;
     private List<ServiceFilmResponse> films;
-    private List<ServiceImagesResponse> images;
+    private List<ServiceImagesDb> images;
     private IProgressLayout iProgressLayout;
     private Typeface lightGhibli, boldGhibli;
 

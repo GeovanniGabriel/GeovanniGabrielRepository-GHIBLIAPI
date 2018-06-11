@@ -95,16 +95,16 @@ public class ServicesImpl {
     public void getImagesToFilms() {
         final ServicesError servicesError = new ServicesError();
 
-        iServicesRetrofitMethodsGit.getImages().enqueue(new Callback<List<ServiceImagesResponse>>() {
+        iServicesRetrofitMethodsGit.getImages().enqueue(new Callback<ServiceImagesResponse>() {
             @Override
-            public void onResponse(Call<List<ServiceImagesResponse>> call, Response<List<ServiceImagesResponse>> response) {
-                ServicesResponse<List<ServiceImagesResponse>> servicesResponse = new ServicesResponse<>();
+            public void onResponse(Call<ServiceImagesResponse> call, Response<ServiceImagesResponse> response) {
+                ServicesResponse<ServiceImagesResponse> servicesResponse = new ServicesResponse<>();
                 servicesResponse.setResponse(response.body());
                 iServiceListener.onResponse(servicesResponse);
             }
 
             @Override
-            public void onFailure(Call<List<ServiceImagesResponse>> call, Throwable t) {
+            public void onFailure(Call<ServiceImagesResponse> call, Throwable t) {
                 servicesError.setMessage("");
                 servicesError.setType(1);
                 iServiceListener.onError(servicesError);

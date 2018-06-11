@@ -13,7 +13,7 @@ import android.view.View;
 import com.geovanni.studioghibli.R;
 import com.geovanni.studioghibli.views.bussiness.interfaces.IProgressLayout;
 import com.geovanni.studioghibli.views.bussiness.interfaces.IServicesContract;
-import com.geovanni.studioghibli.views.bussiness.models.ServiceImagesResponse;
+import com.geovanni.studioghibli.views.bussiness.models.ServiceImagesDb;
 import com.geovanni.studioghibli.views.bussiness.models.ServicePeopleResponse;
 import com.geovanni.studioghibli.views.bussiness.presenters.RootPresenter;
 import com.geovanni.studioghibli.views.bussiness.utils.ServicesError;
@@ -35,7 +35,7 @@ public class PeopleFragment extends BaseFragment implements IServicesContract.Vi
     public static final String TAG = PeopleFragment.class.getSimpleName();
     private RootPresenter rootPresenter;
     private List<ServicePeopleResponse> people;
-    private List<ServiceImagesResponse> images;
+    private List<ServiceImagesDb> images;
     private IProgressLayout iProgressLayout;
     private PeopleAdapter peopleAdapter;
     private Typeface lightGhibli, boldGhibli;
@@ -116,7 +116,7 @@ public class PeopleFragment extends BaseFragment implements IServicesContract.Vi
         try {
             List<ServicePeopleResponse> listResponse = (List<ServicePeopleResponse>) response.getResponse();
             peopleAdapter.replaceData(listResponse, images);
-
+            new ManagerDbAsync.InsertPeopleToDbAsync(PeopleRoomDatabase.getDatabase(getContext()), listResponse).execute();
         } catch (Exception e) {
         }
     }

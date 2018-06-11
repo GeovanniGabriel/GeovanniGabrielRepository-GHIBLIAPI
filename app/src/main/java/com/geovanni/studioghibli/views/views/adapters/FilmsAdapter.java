@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import com.geovanni.studioghibli.R;
 import com.geovanni.studioghibli.views.bussiness.models.ServiceFilmResponse;
-import com.geovanni.studioghibli.views.bussiness.models.ServiceImagesResponse;
+import com.geovanni.studioghibli.views.bussiness.models.ServiceImagesDb;
 import com.squareup.picasso.MemoryPolicy;
 import com.squareup.picasso.Picasso;
 
@@ -22,7 +22,7 @@ import java.util.List;
 public class FilmsAdapter extends RecyclerView.Adapter<FilmsAdapter.ViewHolder> {
 
     private List<ServiceFilmResponse> films;
-    private List<ServiceImagesResponse> images;
+    private List<ServiceImagesDb> images;
     private Context context;
     private Typeface lightGhibli, boldGhibli;
 
@@ -60,9 +60,12 @@ public class FilmsAdapter extends RecyclerView.Adapter<FilmsAdapter.ViewHolder> 
         holder.txvDescription.setTypeface(lightGhibli);
 
         if (images != null && images.size() > 0) {
-            for (ServiceImagesResponse image : images) {
-                if (image.getTitle().equals(film.getTitle())) {
-                    setImageToFilm(holder, image.getUrl());
+            for (ServiceImagesDb image : images) {
+
+                if (image.getSection().equals("Movies")) {
+                    if (image.getTitle().equals(film.getTitle())) {
+                        setImageToFilm(holder, image.getUrl());
+                    }
                 }
             }
         } else {
@@ -86,7 +89,7 @@ public class FilmsAdapter extends RecyclerView.Adapter<FilmsAdapter.ViewHolder> 
         return films.size();
     }
 
-    public void replaceData(List<ServiceFilmResponse> films, List<ServiceImagesResponse> images) {
+    public void replaceData(List<ServiceFilmResponse> films, List<ServiceImagesDb> images) {
         if (films != null) {
             this.films = films;
         }
