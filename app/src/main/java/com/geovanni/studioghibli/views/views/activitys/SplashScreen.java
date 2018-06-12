@@ -72,7 +72,7 @@ public class SplashScreen extends BaseActivity implements IServicesContract.View
     }
 
     private void navigateToMainActivity() {
-        hideProgress();
+        progressLayout.setVisibility(View.GONE);
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -117,7 +117,7 @@ public class SplashScreen extends BaseActivity implements IServicesContract.View
     }
 
     @Override
-    public void showError(ServicesError broxelServicesError) {
+    public void showError(ServicesError servicesError) {
         navigateToMainActivity();
     }
 
@@ -128,6 +128,6 @@ public class SplashScreen extends BaseActivity implements IServicesContract.View
 
     @Override
     public void hideProgress() {
-        progressLayout.setVisibility(View.GONE);
+        //progressLayout.setVisibility(View.GONE);
     }
 }

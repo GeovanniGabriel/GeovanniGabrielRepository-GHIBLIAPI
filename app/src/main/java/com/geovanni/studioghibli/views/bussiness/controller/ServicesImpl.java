@@ -94,7 +94,6 @@ public class ServicesImpl {
 
     public void getImagesToFilms() {
         final ServicesError servicesError = new ServicesError();
-
         iServicesRetrofitMethodsGit.getImages().enqueue(new Callback<ServiceImagesResponse>() {
             @Override
             public void onResponse(Call<ServiceImagesResponse> call, Response<ServiceImagesResponse> response) {

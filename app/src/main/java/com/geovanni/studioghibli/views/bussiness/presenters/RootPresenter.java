@@ -41,8 +41,8 @@ public class RootPresenter implements IServiceListener {
     }
 
     @Override
-    public void onError(ServicesError broxelServicesError) {
+    public void onError(ServicesError servicesError) {
         view.hideProgress();
-        view.showError(broxelServicesError);
+        view.showError(servicesError);
     }
 }

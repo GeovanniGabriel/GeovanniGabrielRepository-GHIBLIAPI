@@ -125,7 +125,7 @@ public class FilmsFragment extends BaseFragment implements IServicesContract.Vie
     }
 
     @Override
-    public void showError(ServicesError broxelServicesError) {
+    public void showError(ServicesError servicesError) {
         getActivity().onBackPressed();
     }
 

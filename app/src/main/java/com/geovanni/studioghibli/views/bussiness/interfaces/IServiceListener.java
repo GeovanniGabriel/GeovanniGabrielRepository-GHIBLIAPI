@@ -7,6 +7,6 @@ public interface IServiceListener<T> {
 
     void onResponse(ServicesResponse<T> response);
 
-    void onError(ServicesError broxelServicesError);
+    void onError(ServicesError servicesError);
 
 }

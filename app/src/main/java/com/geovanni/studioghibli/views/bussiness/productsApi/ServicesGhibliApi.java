@@ -33,7 +33,7 @@ public class ServicesGhibliApi implements IServicesContract.View {
     }
 
     @Override
-    public void showError(ServicesError broxelServicesError) {
+    public void showError(ServicesError servicesError) {
     }
 
     @Override

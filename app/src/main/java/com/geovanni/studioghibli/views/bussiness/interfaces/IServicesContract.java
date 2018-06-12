@@ -7,7 +7,7 @@ public interface IServicesContract {
     interface View<T> {
         void showResponse(ServicesResponse<T> response);
 
-        void showError(ServicesError broxelServicesError);
+        void showError(ServicesError servicesError);
 
         void showProgress();
 

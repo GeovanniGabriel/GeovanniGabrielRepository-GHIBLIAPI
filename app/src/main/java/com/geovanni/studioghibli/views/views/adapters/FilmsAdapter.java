@@ -3,17 +3,16 @@ package com.geovanni.studioghibli.views.views.adapters;
 import android.content.Context;
 import android.graphics.Typeface;
 import android.support.annotation.NonNull;
+import android.support.v7.widget.AppCompatImageView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.geovanni.studioghibli.R;
 import com.geovanni.studioghibli.views.bussiness.models.ServiceFilmResponse;
 import com.geovanni.studioghibli.views.bussiness.models.ServiceImagesDb;
-import com.squareup.picasso.MemoryPolicy;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -78,9 +77,9 @@ public class FilmsAdapter extends RecyclerView.Adapter<FilmsAdapter.ViewHolder> 
         Picasso.get()
                 .load(url)
                 .error(R.drawable.ic_studio_ghibli)
-                .memoryPolicy(MemoryPolicy.NO_CACHE, MemoryPolicy.NO_STORE)
                 .placeholder(R.drawable.ic_studio_ghibli)
-                .fit().centerCrop()
+                .fit()
+                .centerCrop()
                 .into(holder.imvFilm);
     }
 
@@ -101,17 +100,17 @@ public class FilmsAdapter extends RecyclerView.Adapter<FilmsAdapter.ViewHolder> 
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        private ImageView imvFilm;
+        private AppCompatImageView imvFilm;
         private TextView txvDirector, txvNameFilm, txvReleaseDate, txvDescription;
 
         public ViewHolder(View itemView) {
             super(itemView);
 
-            imvFilm = (ImageView) itemView.findViewById(R.id.imvFilm);
-            txvDirector = (TextView) itemView.findViewById(R.id.txvDirector);
-            txvNameFilm = (TextView) itemView.findViewById(R.id.txvNameFilm);
-            txvReleaseDate = (TextView) itemView.findViewById(R.id.txvReleaseDate);
-            txvDescription = (TextView) itemView.findViewById(R.id.txvDescription);
+            imvFilm = itemView.findViewById(R.id.imvFilm);
+            txvDirector = itemView.findViewById(R.id.txvDirector);
+            txvNameFilm = itemView.findViewById(R.id.txvNameFilm);
+            txvReleaseDate = itemView.findViewById(R.id.txvReleaseDate);
+            txvDescription = itemView.findViewById(R.id.txvDescription);
 
         }
     }

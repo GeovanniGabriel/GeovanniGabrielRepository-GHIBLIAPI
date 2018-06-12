@@ -107,7 +107,7 @@ public class PeopleFragment extends BaseFragment implements IServicesContract.Vi
     }
 
     private void setupRecyclerView() {
-        rvPeople.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
+        rvPeople.setLayoutManager(new LinearLayoutManager(getContext()));
         rvPeople.setAdapter(peopleAdapter);
     }
 
@@ -122,7 +122,7 @@ public class PeopleFragment extends BaseFragment implements IServicesContract.Vi
     }
 
     @Override
-    public void showError(ServicesError broxelServicesError) {
+    public void showError(ServicesError serviceError) {
         getActivity().onBackPressed();
     }
 
